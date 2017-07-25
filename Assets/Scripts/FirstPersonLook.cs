@@ -59,6 +59,7 @@ public class FirstPersonLook : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("Space Pressed");
+            Cursor.visible = false;
             if ((MainCamActive == (true)))
             {
                 CameraCamActive = true;
@@ -80,7 +81,8 @@ public class FirstPersonLook : MonoBehaviour
         if ((CameraCamActive == (true)) && (Input.GetKey(KeyCode.Mouse0)))
         {
             CameraSnap.SetActive(true);
-            
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
             Debug.Log("Mouse Clicked");
         }
         if ((CameraCamActive == (true)) && (Input.GetKeyUp(KeyCode.Mouse0))) {

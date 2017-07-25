@@ -52,7 +52,8 @@ public class StartScript : MonoBehaviour {
             Eyelid_Top.GetComponent<ConstantForce>().enabled = true;
             Eyelid_Bottom.GetComponent<ConstantForce>().enabled = true;
             Cursor.visible = false;
-            dadTime += Time.deltaTime;
+           
+            SpaceWasPressed = true;
         } 
         if (TimeToEnd == true)
         {
@@ -65,7 +66,12 @@ public class StartScript : MonoBehaviour {
             Eyelid_Bottom.SetActive(false);
             Player.GetComponent<FirstPersonLook>().enabled = false;
         }
-        dadTime += Time.deltaTime;
+        if (SpaceWasPressed == true)
+        {
+            dadTime += Time.deltaTime;
+            Cursor.visible = false;
+        }
+        
         if (dadTime > 4.0f)
         {
             DadText1.SetActive(true);
