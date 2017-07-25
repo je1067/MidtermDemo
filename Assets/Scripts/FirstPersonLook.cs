@@ -19,6 +19,9 @@ public class FirstPersonLook : MonoBehaviour
     public GameObject PictureScoreText;
     public GameObject CameraSnap;
     public float CameraWait= 1.0f;
+
+    public AudioClip cameraClick;
+    AudioSource audioSource;
     
 
     void Start()
@@ -30,6 +33,7 @@ public class FirstPersonLook : MonoBehaviour
         PictureScoreText.SetActive(false);
         CameraSnap.SetActive(false);
         Debug.Log("Game Started");
+        audioSource = GetComponent<AudioSource>();
     }
 
 
@@ -76,12 +80,15 @@ public class FirstPersonLook : MonoBehaviour
         if ((CameraCamActive == (true)) && (Input.GetKey(KeyCode.Mouse0)))
         {
             CameraSnap.SetActive(true);
+            
             Debug.Log("Mouse Clicked");
         }
-        if ((CameraCamActive == (true)) && (Input.GetKeyUp(KeyCode.Mouse0))) { 
+        if ((CameraCamActive == (true)) && (Input.GetKeyUp(KeyCode.Mouse0))) {
+
+                
+            audioSource.PlayOneShot(cameraClick, 0.8f);
             CameraSnap.SetActive(false);
-            
-                MainCamActive = true;
+            MainCamActive = true;
                 CameraCam.GetComponent<Camera>().enabled = false;
                 CameraCamActive = (false);
                 MainCam.GetComponent<Camera>().enabled = true;
